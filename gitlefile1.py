@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import psycopg2
 from typing import Optional
-
+from database import get_db
 
 
 
@@ -26,7 +26,6 @@ def insert_student(student:Student):
         password='lion'
 
     )
-
     cur=conn.cursor()
     cur.execute(
         'insert into student values (%s,%s,%s,%s,%s,%s)',
